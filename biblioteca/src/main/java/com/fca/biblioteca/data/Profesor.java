@@ -7,16 +7,24 @@ import jakarta.persistence.*;
 public class Profesor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idprofesor")
-    private int idProfesor;
+    private int idprofesor;
 
-    @Column(name = "nombre")
-    private String nombre;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idpersona")
+    private Persona persona;
 
-    @Column(name = "apellido")
-    private String apellido;
+    @Column(name = "numerotrabajador")
+    private String numerotrabajador;
 
-    @Column(name = "numempleado")
-    private String numEmpleado;
+    public Profesor() {}
+
+    public int getIdprofesor() { return idprofesor; }
+    public void setIdprofesor(int idprofesor) { this.idprofesor = idprofesor; }
+
+    public Persona getPersona() { return persona; }
+    public void setPersona(Persona persona) { this.persona = persona; }
+
+    public String getNumerotrabajador() { return numerotrabajador; }
+    public void setNumerotrabajador(String numerotrabajador) { this.numerotrabajador = numerotrabajador; }
 }

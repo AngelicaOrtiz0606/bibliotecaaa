@@ -7,13 +7,25 @@ import jakarta.persistence.*;
 public class AutorLibro {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idautorlibro")
-    private int idAutorLibro;
+    private int idautorlibro;
 
-    @Column(name = "idautor")
-    private int idAutor;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idautor")
+    private Autor autor;
 
-    @Column(name = "idlibro")
-    private int idLibro;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idlibro")
+    private Libro libro;
+
+    public AutorLibro() {}
+
+    public int getIdautorlibro() { return idautorlibro; }
+    public void setIdautorlibro(int idautorlibro) { this.idautorlibro = idautorlibro; }
+
+    public Autor getAutor() { return autor; }
+    public void setAutor(Autor autor) { this.autor = autor; }
+
+    public Libro getLibro() { return libro; }
+    public void setLibro(Libro libro) { this.libro = libro; }
 }

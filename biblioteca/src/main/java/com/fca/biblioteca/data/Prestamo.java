@@ -8,19 +8,37 @@ import java.time.LocalDate;
 public class Prestamo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idprestamo")
-    private int idPrestamo;
+    private int idprestamo;
 
-    @Column(name = "idlibro")
-    private int idLibro;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idpersona")
+    private Persona persona;
 
-    @Column(name = "idalumno")
-    private int idAlumno;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idlibro")
+    private Libro libro;
 
-    @Column(name = "fecha_prestamo")
-    private LocalDate fechaPrestamo;
+    @Column(name = "fechaprestamo")
+    private LocalDate fechaprestamo;
 
-    @Column(name = "fecha_devolucion")
-    private LocalDate fechaDevolucion;
+    @Column(name = "diasprestamo")
+    private int diasprestamo;
+
+    public Prestamo() {}
+
+    public int getIdprestamo() { return idprestamo; }
+    public void setIdprestamo(int idprestamo) { this.idprestamo = idprestamo; }
+
+    public Persona getPersona() { return persona; }
+    public void setPersona(Persona persona) { this.persona = persona; }
+
+    public Libro getLibro() { return libro; }
+    public void setLibro(Libro libro) { this.libro = libro; }
+
+    public LocalDate getFechaprestamo() { return fechaprestamo; }
+    public void setFechaprestamo(LocalDate fechaprestamo) { this.fechaprestamo = fechaprestamo; }
+
+    public int getDiasprestamo() { return diasprestamo; }
+    public void setDiasprestamo(int diasprestamo) { this.diasprestamo = diasprestamo; }
 }
