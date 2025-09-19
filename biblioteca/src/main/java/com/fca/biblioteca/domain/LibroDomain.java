@@ -31,4 +31,20 @@ public class LibroDomain {
                 .filter(filtroLibro)
                 .collect(Collectors.toList());
     }
+
+
+    public List<Libro> buscarLibros(String titulo, String edicion){
+
+        if(titulo == null || edicion == null || titulo.isEmpty() || edicion.isEmpty()){/*Este es de los parametros del metodo*/
+            return new ArrayList<>();
+        }
+
+        /*Acá libro es otro, son como declaraciones para evaluar la lista en el return*/
+        Predicate<Libro> filtroLibro = libro -> libro != null && libro.getTitulo().equals(titulo) && libro.getEdicion().equals(edicion);
+
+        return libroRepository.findAll().stream()
+                .filter(filtroLibro)
+                .collect(Collectors.toList());
+    }
+
 }

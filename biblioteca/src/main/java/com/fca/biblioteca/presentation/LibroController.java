@@ -21,10 +21,18 @@ public class LibroController {
         this.libroDomain = libroDomain;
     }
 
-    @RequestMapping(value = "/libros", method = RequestMethod.GET)
+    @RequestMapping(value = "/libros-disponibles", method = RequestMethod.GET)
     @ResponseBody /*Lo convierte en un json*/
     public List<Libro> buscarLibrosPorTitulo
             (@RequestParam String titulo, @RequestParam String edicion){     /*Capa de presentación, que lo pasa a logica o usuario*/
         return libroDomain.buscarLibrosDisponibles(titulo, edicion);   /*Aca ya traemos la lista*/
+    }
+
+
+    @RequestMapping(value = "/libros", method = RequestMethod.GET)
+    @ResponseBody /*Lo convierte en un json*/
+    public List<Libro> buscarLibros
+            (@RequestParam String titulo, @RequestParam String edicion){   /*Capa de presentación, que lo pasa a logica o usuario*/
+        return libroDomain.buscarLibros(titulo, edicion);   /*Aca ya traemos la lista*/
     }
 }
